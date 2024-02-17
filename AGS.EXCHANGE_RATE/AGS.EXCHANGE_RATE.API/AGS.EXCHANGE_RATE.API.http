@@ -1,0 +1,6 @@
+@AGS.EXCHANGE_RATE.API_HostAddress = http://localhost:5078
+
+GET {{AGS.EXCHANGE_RATE.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
