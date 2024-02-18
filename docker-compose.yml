@@ -1,0 +1,12 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  agsexchangerateapi:
+    image: agsexchangerateapi
+    build:
+      context: .
+      dockerfile: AGS.EXCHANGE_RATE/AGS.EXCHANGE_RATE.API/Dockerfile
+    ports:
+      - 5078:5078
