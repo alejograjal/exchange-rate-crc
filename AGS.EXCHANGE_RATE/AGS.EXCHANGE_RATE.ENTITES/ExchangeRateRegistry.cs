@@ -8,10 +8,10 @@ public class ExchangeRateRegistry
     public string BankEntity { get; set; } = null!;
 
     [JsonPropertyName("MontoCompra")]
-    public double AmountBuy { get; set; }
+    public decimal AmountBuy { get; set; }
 
     [JsonPropertyName("MontoVenta")]
-    public double AmountSell { get; set; }
+    public decimal AmountSell { get; set; }
 
     [JsonPropertyName("UltimaActualizacion")]
     public DateTime LastUpdated {get; set;}

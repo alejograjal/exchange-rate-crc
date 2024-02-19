@@ -1,3 +1,5 @@
+using System;
+using System.Globalization;
 using System.Formats.Asn1;
 using System.IO.Compression;
 using AGS.EXCHANGE_RATE.ENTITES;
@@ -37,9 +39,9 @@ public class ExchangeRateReaderComposer : IExchangeRateReaderComposer
                 ExchangeRateRegistry exchangeRateRegistry = new()
                 {
                     BankEntity = childElements[1].InnerText.Trim(),
-                    AmountBuy = Double.Parse(childElements[2].InnerText.Trim()),
-                    AmountSell = Double.Parse(childElements[3].InnerText.Trim()),
-                    LastUpdated = DateTime.Parse(childElements[5].InnerText.Substring(0, 10).Trim())
+                    AmountBuy = Decimal.Parse(childElements[2].InnerText.Trim().Replace(",",".")),
+                    AmountSell = Decimal.Parse(childElements[3].InnerText.Trim().Replace(",",".")),
+                    LastUpdated = DateTime.ParseExact(childElements[5].InnerText.Substring(0, 10).Trim(), "dd/MM/yyyy", CultureInfo.InvariantCulture)
                 };
 
                 entityTypes.Single(m => m.Name == previousEntityType).AddExchangeRateRegistry(exchangeRateRegistry);
